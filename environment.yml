@@ -1,4 +1,4 @@
-name: magenta
+name: transformer
 channels:
     - anaconda
 dependencies:

@@ -11,7 +11,7 @@ conda create --file environment.yml
 Activate with 
 
 ```bash
-conda activate magenta 
+conda activate transformer 
 ```
 
 Deactivate with
