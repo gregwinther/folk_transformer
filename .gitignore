@@ -1,0 +1,5 @@
+# Stupid mac directory file
+.DS_Store
+
+# Models folder
+models/
