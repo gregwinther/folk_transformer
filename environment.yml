@@ -1,0 +1,11 @@
+name: magenta
+channels:
+    - anaconda
+dependencies:
+    - python >= 3.7, < 3.8
+    - jupyter
+    - gsutil
+    - pip
+    - pip:
+        - -r requirements.txt
+
