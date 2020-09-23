@@ -3,3 +3,16 @@
 
 # Models folder
 models/
+
+# Latex byproducts
+*.bcf
+*.fls 
+*.aux
+*.blg
+*.log
+*.run.xml
+*.bbl
+*.fdb_latexmk
+*.out
+*.synctex.gz
+
