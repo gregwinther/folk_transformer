@@ -19,7 +19,7 @@ six >= 1.12.0
 sk-video
 sox >= 1.3.7
 tensor2tensor
-tensorflow
+tensorflow == 1.15.0
 tensorflow-datasets 
 tensorflow-probability == 0.7
 tensorflow-estimator
