@@ -2,4 +2,4 @@
 
 This is a project created as part of coursework at the University of Oslo.
 
-![](/audio/americana_test3.mp3)
+![](./audio/americana_test3.mp3)
