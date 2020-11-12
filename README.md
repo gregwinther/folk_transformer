@@ -8,6 +8,8 @@ We have created a model that was initialized from the
 learning by training it furter on Americana MIDI files. These files are not public
 domain, regrettably. We have uploaded our model to [Zenodo](https://zenodo.org/record/4270422).
 
+You can checkout some examples here: (https://gregwinther.github.io/folk_transformer/).
+
 ## Setup/Installation
 
 We have relied on the `musicautobot` by [bearpelican](https://github.com/bearpelican/musicautobot).
