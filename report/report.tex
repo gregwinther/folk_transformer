@@ -5,12 +5,14 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{csquotes}
+\usepackage{multirow}
+\usepackage{graphics}
+\graphicspath{{./images/}}
 \usepackage[style=nature]{biblatex}
 \addbibresource{references.bib}
 
 \title{Generating Americana with transfer learning from the music transformer \\
-    \normalsize{\url{github.com/gregwinther/folk_transformer}}}
-%\author{Tom F. Hansen, Bjørn Iversen and Sebastian G. Winther-Larsen}
+    \normalsize{\url{github.com/gregwinther/folk_transformer} and \url{https://gregwinther.github.io/folk_transformer/}}}
 
 \author{\IEEEauthorblockN{Sebastian G. Winther-Larsen} \\
 \IEEEauthorblockA{\textit{Center for Computing in Science Education,
@@ -36,8 +38,9 @@
         realistic music for minutes. Up to now the results have mainly been succesful for piano music, but
         have failed for more technically complex music such as jazz. Americana folk music can be seen as
         a stepping stone to more complex music. In this work we generate Americana folk music with 2 different approaches; transfer learning from the MAESTRO dataset and solely traning on the Americana dataset. We then evaluate these results in a qualitative and quantitative way. Results from the 
-        quality assessment indicate that both models have been succesful, but the model based on transfer
-        learning is favoured. 
+        quality assessment indicate that both models have been moderately succesful, and the model based on transfer learning is favoured. In a rating process people have rated the songs to in averate 2.5,
+         where 1 is not realistic and 5 is realistic, compared to "real" humanmade music. In a technical 
+         evaluation the evaluated songs showed a....
         \end{abstract}
         
         \begin{IEEEkeywords}
@@ -181,8 +184,8 @@
         Americana music is generated in 2 different model concepts:
         \begin{enumerate}
             \item Utilize transfer learning with MAESTRO music transformer as a base,
-                    and train with the full dataset of Americana midi-files.
-            \item Train a new transformer model only using the full Americana dataset
+                    and train with the full dataset of Americana midi-files (hereafter called Transfer Americana).
+            \item Train a new transformer model only using the full Americana dataset (hereafter called Americana)
         \end{enumerate} 
         
         The hypothesis is that concept number 1 will result in the best performing model,
@@ -194,11 +197,58 @@
         The quantitative, hence objective, way can shortly be described as a technical
         comparison of the predicted signal and the real signal. Principles by \cite{yang2020evaluation} and ~\cite{wu2020jazz} will be utilized.
         
-        The qualitative part constitutes an music expert judgement,
+        The qualitative part constitutes a music expert judgement,
         based on listening to the generated music files from the objective evaluation.
-        In a second, and survey based part, a large number of random people is asked
+        In a second, and survey based part, a number of random people is asked
         to rate the different music files.
         
+        \subsection{Qantitative evaluation}
+        
+        For quantative evaluation we will be using the objective
+        evaluation toolbox mgeval~\cite{yang2020evaluation}.
+        The toolbox lets us extract absolute metrics from MIDI files
+        which lets us inspect the properties of both the dataset used
+        for training and the generated dataset. The features extracted
+        for absolute measures are divided into pitch-based features Pitch count (PC),
+        Pitch class histogram (PCH), Pitch class transition matrix (PCTM),
+        pitch range (PR) and Average pitch interval (PI) and rhythm-based features,
+        Note count (NC), Average inter-onset-interval (IOI), Note length
+        histogram (NLH) and Note length transition matrix (NLTM).
+        These metrics can then be used to acquire the relative metrics between
+        datasets with the use of exhaustive cross validation to acquire the
+        distance between each sample of same set (intra-dataset) and another
+        set (inter-dataset). 
+        
+        \subsection{Evidence-Based Design for Assessment and Evaluation}
+        As a rigorous and well-proven approach do construct a framework for 
+        assessing music composed by artificial intelligence models, we propose 
+        adapting the methodology of Evidence-Centered
+        Design~\cite{mislevy2003focus,mislevy2017evidence}
+        By working with Evidence-Centered Design (ECD), we engage in a modern
+        approach to assessment design,
+        for assessing complex knowledge and practices.
+        ECD is originally applied to the contruction of psychometric learning
+        assessment tools. Through to completion, it would take several years to 
+        construct such a tool, something that is well outside the scope of this 
+        study. However, we prospose to begin with the first step within ECD - 
+        \textbf{Domain Analysis}. This involves exploratory interviews of experts
+        in the field in order to contruct a thematically organized and prioritized
+        list of knowledge and practices to assess. Scecific to our study,
+        we find it necessary to talk to professional musicians and composers 
+        in order to uncover what actually makes a good composition.
+        
+        \subsection{Qualitative evaluation}
+        In the survey part people were presented to 5 generated songs with length 
+        40 seconds - 1 minute, facilitated in a Google survey form. The songs were generated by sending a primer of the first 3 bars (xxx seconds) of 5 different original songs from the Americana dataset to the trained model. Each song were 
+        presented in 2 versions, one generated  by Transfer-Americana and one by Americana. 
+        They had to choose the one they liked best in each pair of songs. In addition they 
+        had to rate the best version related to how realistic it was compared with human 
+        generated music. The range was 1-worst to 5-best.
+
+        3 music experts were presented to the 5 same genereated songs, and evaluated 
+        the result in the form of an interview. Their background was....
+        %TODO: sebastian sier du mer om hvordan dette foregår + fyller ut her
+
     \subsection{Datasets}
 
         A brief summary of each of the datasets we have used in this study 
@@ -226,87 +276,111 @@
         the ealry 1800s and 1922. The genres range from blues, ragtime, naval songs,
         hyms, minstres songs and spirituals. 
     
-    \begin{table}
-    \begin{center}
-        \caption{
-            Data set description
-            \label{tab:data}
-        }
-        \begin{tabular}{l c c c} \hline
-            & MAESTRO v2 & Americana \\ \hline\hline
-        No. of songs & 1282 & 5711 \\ \hline
-        Total time [hours] & 201 & 329 \\ \hline
-        Mean length [min] & 9.4 & 3.45  \\ \hline
-       \end{tabular}
-    \end{center}
-    \end{table}
+        \begin{table}
+        \begin{center}
+            \caption{Data set description \label{tab:data}}
+            \begin{tabular}{l c c c} \hline
+                & MAESTRO v2 & Americana \\ \hline\hline
+            No. of songs & 1282 & 5711 \\ \hline
+            Total time [hours] & 201 & 329 \\ \hline
+            Mean length [min] & 9.4 & 3.45  \\ \hline
+        \end{tabular}
+        \end{center}
+        \end{table}
 
-    % \subsection{Model topology and tuning}
-
-    %     A pretrained music transformer is fetched from
-    
-    \subsection{Qantitative evaluation}
-        For quantative evaluation we will be using the objective
-        evaluation toolbox mgeval~\cite{yang2020evaluation}.
-        The toolbox lets us extract absolute metrics from MIDI files
-        which lets us inspect the properties of both the dataset used
-        for training and the generated dataset. The features extracted
-        for absolute measures are divided into pitch-based features Pitch count (PC),
-        Pitch class histogram (PCH), Pitch class transition matrix (PCTM),
-        pitch range (PR) and Average pitch interval (PI) and rhythm-based features,
-        Note count (NC), Average inter-onset-interval (IOI), Note length
-        histogram (NLH) and Note length transition matrix (NLTM).
-        These metrics can then be used to acquire the relative metrics between
-        datasets with the use of exhaustive cross validation to acquire the
-        distance between each sample of same set (intra-dataset) and another
-        set (inter-dataset). 
-
-    \subsection{Evidence-Based Design for Assessment and Evaluation}
-        As a rigorous and well-proven approach do construct a framework for 
-        assessing music composed by artificial intelligence models, we propose 
-        adapting the methodology of Evidence-Centered
-        Design~\cite{mislevy2003focus,mislevy2017evidence}
-        By working with Evidence-Centered Design (ECD), we engage in a modern
-        approach to assessment design,
-        for assessing complex knowledge and practices.
-        ECD is originally applied to the contruction of psychometric learning
-        assessment tools. Through to completion, it would take several years to 
-        construct such a tool, something that is well outside the scope of this 
-        study. However, we prospose to begin with the first step within ECD - 
-        \textbf{Domain Analysis}. This involves exploratory interviews of experts
-        in the field in order to contruct a thematically organized and prioritized
-        list of knowledge and practices to assess. Scecific to our study,
-        we find it necessary to talk to professional musicians and composers 
-        in order to uncover what actually makes a good composition.
+    \subsection{Modelling process}
+        MIDI-files was first preprocessed to fit into the format used by the transformer model.
+        This was carried out by utilizing an implementation of a transformer adapted for music, 
+        incorporated in a package from Musicautobot \cite{musicautobot}. Scripts for transfer learning and
+        single learning were built around this package. Both models were then trained on a supercomputer
+        with the following specification for xxx hours:
+        %TODO: sebastian fyller du inn
 
     \section{Results}
-        AT THE TIME OF WRITING TRAINING OF MODELS HAVE NOT BEEN COMPLETED. THE TRAINING
-        PROCESS HAS BEEN DEMANDING AND HAVE TAKEN LONGER TIME THAN EXPECTED. 
-        RESULT IS EXPECTED DURING THE WEEKEND. THE INITIAL RESULTS ARE PROMISING.
 
-        The plan - focus the comming days:
-        \begin{itemize}
-            \item Generate musicals samples with the two models. Distribute
-                in questionaire for comparative assessment in A/B-style.
-            \item Interview musical ``experts'', most likely in a focus group 
-                to uncover necessary components of a good composition. Would 
-                include playing generated music for participants.
-            \item Apply quantitative analysis tools to generated music.
-            \item Complet the paper with results and discussions.
-        \end{itemize}
+    \subsection{Quantitative evaluation}
+        \begin{table}[]
+            \begin{center}
+            \caption{
+                Results from quantitative evaluation
+                \label{tab:data}
+            }
+            \begin{tabular}{l|rr|rr|rr}
+            \multirow{3}{*}{} &
+            \multicolumn{2}{c|}{Training} &
+            \multicolumn{2}{c|}{Americana} &
+            \multicolumn{2}{c}{Transfer} \\ \cline{2-7} 
+            &
+            \multicolumn{2}{c|}{Intra-set} &
+            \multicolumn{2}{c|}{Intra-set} &
+            \multicolumn{2}{c}{Intra-set} \\ \cline{2-7} 
+            &
+            \multicolumn{1}{c|}{mean} &
+            \multicolumn{1}{c|}{STD} &
+            \multicolumn{1}{c|}{mean} &
+            \multicolumn{1}{c|}{STD} &
+            \multicolumn{1}{c|}{mean} &
+            \multicolumn{1}{c}{STD} \\ \hline
+            PC   & 11.777  & 1.700  & 3.577  & 0.636 & 6.466  & 0.706 \\
+            NC   & 442.377 & 73.911 & 11.377 & 1.542 & 21.955 & 4.678 \\
+            PCH  & 0.384   & 0.013  & 0.164  & 0.007 & 0.365  & 0.026 \\
+            PCTM & 821.396 & 56.336 & 10.475 & 0.292 & 25.991 & 3.303 \\
+            PR   & 19.088  & 1.638  & 5.266  & 0.611 & 10.400 & 2.038 \\
+            PI   & 3.836   & 0.510  & 0.848  & 0.128 & 2.032  & 0.479 \\
+            IOI  & 0.046   & 0.006  & 0.105  & 0.007 & 0.235  & 0.022 \\
+            NLH  & 0.471   & 0.027  & 0.263  & 0.022 & 0.466  & 0.043 \\
+            NLTM & 316.896 & 23.442 & 23.241 & 1.359 & 46.778 & 4.027
+            \end{tabular}
+            \end{center}
+            \end{table}
+
+            \begin{figure}
+                \centering
+                \includegraphics[width=8.5cm, height=5cm]{gen_intra_gen_training_inter}
+                \caption{some label}
+                \label{fig:gen_intra_gen_training_inter}
+            \end{figure} 
             
-    % \textbf{Americana generator with transfer learning}
-    %     some text
+            \begin{figure}
+                \centering
+                \includegraphics[width=8.5cm, height=5cm]{PCTMNLTM.eps}
+                \caption{some label}
+            \end{figure} 
+            
+        %TODO: Bjørn: Lager du en tekst til dette kapittelet.
 
-    % \textbf{Americana generator in stand alone learning}
-    %     some text
+    \subsection{Qualitative evaluation}
     
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=8.5cm, height=5cm]{songs_category.png}
+            \caption{Bars show a count of the number of votes, respectively for Transfer-Americana
+             and Americana, for each of the 5 songs. The numbers in parenthesis below the Bars
+             is the average rating for each of the songs, when compared to a realistic human made
+             song (1 is worst, 5 is best)}
+             \label{fig:songs}
+        \end{figure} 
+        Figure \ref{fig:songs} visualize a count of the number of votes, respectively for Transfer-Americana
+        and Americana, for each of the 5 songs. The numbers in parenthesis below the Bars
+        is the average rating for each of the songs, when compared to a realistic human made
+        song (1 is worst, 5 is best). Inspecting the figure we see a general trend where Transfer-Americana is
+        favoured in 4 of 5 songs. Song 5 has equal score, but is also the song with the lowest 
+        realistic-rating. A t-statistic was calculated for this result, describing a significant favouring of 
+        Transfer-Americana, with a p-value of 0.07. These results verified the hypothesis that a music transformer model will perform better when it is based on the pretrained model, increasing the total number of music-samples, even though the base model was trained on the classical \textbf{MAESTRO} dataset. It must be pointed out the uncertainty related to the relatively low number of samples in the survey. 
+        
+        In this survey some people have made comments about the overall performance ....
+
+        Evaluation carried out in interview with musicians resulted in.... %TODO: Sebastian
+
     \section{Discussion}
+    When we compare the results from the quantitative and qualitative evaluation we see the same trend ..
+
+    An interesting pattern is the variation in count of superiority between songs. In song 1, 2 and 5 the count is close to similar, but for song 3 and 4 the majority of people choose the Transfer-Americana. When we compare this to the technical evaluation we see the same pattern.... It could be that the composition and complexity in certain primers is more dependent on a bigger database of trained songs, than other primers. This is something to further analysis i future work.
+
     
     \section{Conclusions and further development}
 
     \vfill
     \pagebreak
-    
     \printbibliography
 \end{document}
