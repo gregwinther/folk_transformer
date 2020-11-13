@@ -204,7 +204,7 @@
         
         \subsection{Qantitative evaluation}
         
-        For quantative evaluation we will be using the objective
+        For quantitative evaluation, we will be using the objective
         evaluation toolbox mgeval~\cite{yang2020evaluation}.
         The toolbox lets us extract absolute metrics from MIDI files
         which lets us inspect the properties of both the dataset used
@@ -215,8 +215,8 @@
         Note count (NC), Average inter-onset-interval (IOI), Note length
         histogram (NLH) and Note length transition matrix (NLTM).
         These metrics can then be used to acquire the relative metrics between
-        datasets with the use of exhaustive cross validation to acquire the
-        distance between each sample of same set (intra-dataset) and another
+        datasets with the use of exhaustive cross-validation to acquire the
+        distance between each sample of the same set (intra-dataset) and another
         set (inter-dataset). 
         
         \subsection{Evidence-Based Design for Assessment and Evaluation}
@@ -359,7 +359,7 @@
 
     \subsection{Qualitative evaluation}
     
-        \begin{figure}[h]
+        \begin{figure}
             \centering
             \includegraphics[width=8.5cm, height=5cm]{songs_category.png}
             \caption{Bars show a count of the number of votes, respectively for Transfer-Americana
@@ -369,13 +369,17 @@
              \label{fig:songs}
         \end{figure} 
 
+        \begin{figure}
+            \centering
+            \includegraphics[width=8.5cm, height=5cm]{scores.png}
+            \caption{Boxplot of ratings for each of the 5 songs when compared to a realistic human made song (1 is worst, 5 is best). Median in horisontal black line, box defines by 25-75 percentile. The red dots are all registered scores.}
+             \label{fig:scores}
+        \end{figure} 
+
         Figure \ref{fig:songs} visualize a count of the number of votes, respectively for Transfer-Americana
-        and Americana, for each of the 5 songs. The numbers in parenthesis below the Bars
-        is the average rating for each of the songs, when compared to a realistic human made
-        song (1 is worst, 5 is best). Inspecting the figure we see a general trend where Transfer-Americana is
-        clearly favoured in 4 of 5 songs. Song 5 has a closer score, and is also the song with the lowest 
-        realistic-rating. A t-statistic was calculated for this result, describing a significant favouring of 
-        Transfer-Americana, with a p-value of 0.07. These results verified the hypothesis that a music transformer model will perform better when it is based on the pretrained model, increasing the total number of music-samples, even though the base model was trained on the classical \textbf{MAESTRO} dataset. It must be pointed out the uncertainty related to the relatively low number of samples in the survey. 
+        and Americana, for each of the 5 songs. The numbers in parenthesis below the Bars is the average rating for each of the songs when compared to a real human-made song (1 is worst, 5 is best). Inspecting the figure we see a general trend where Transfer-Americana is favoured in 4 of 5 songs. Song 5 has a closer score and is also the song with the lowest average rating of 2.1. 69 \% of all choices favour Transfer-Americana. A t-statistic was calculated for this result, describing a significant favouring of 
+        Transfer-Americana, with a p-value of 0.07. These results verified the hypothesis that a music transformer model will perform better when it is based on the pre-trained model, increasing the total number of music-samples, even though the base model was trained on the classical \textbf{MAESTRO} dataset. It must be pointed out the uncertainty related to the relatively low number of samples in the survey. 
+        In figure \ref{fig:scores} a boxplot is visualizing the single scorings in a more detailed manner. Red points marks all the single scorings. The median for song 1-4 has a score of 3 and also single scorings of 4 and 5, indicating that some people consider the songs as comparable to human made music.
         
         In this survey some people have made comments about the overall performance ....
 
@@ -384,9 +388,11 @@
     \section{Discussion}
     When we compare the results from the quantitative and qualitative evaluation we see the same trend ..
 
-    Important goals of the work was a) to verify that a model trained by transfer learning and therefore based on more samples will perform better, even though the base model constitute of songs of a different music genre, and b) show that it is possible to generate more complex music than generated in earlier related work. Results from qualitative and quantitative evaluation clearly shows that Transfer-Americana perform better than Americana, fullfilling goal a). Scorings from comparison with human-made music to some degree supports goal b), with an average rating of 2.6 of 5, but there is still a way to go. Especially for the songs from the Americana model, we see that the melodic part degrades faster than for Transfer-Americana, a pattern wich probably has affected the comparisons and the scoring.
+    Important goals of the work was 1) to verify that a model trained by transfer learning and therefore based on more samples will perform better, even though the base model constitute of songs of a different music genre, and 2) show that it is possible to generate more complex music than generated in earlier related work. Results from qualitative and quantitative evaluation clearly shows that Transfer-Americana perform better than Americana, fullfilling goal 1). Scorings from comparison with human-made music to some degree supports goal 2), with an average rating of 2.6 of 5, but there is still a way to go. Especially for the songs from the Americana model, we see that the melodic part degrades faster than for Transfer-Americana, a pattern wich probably has affected the comparisons and the scoring.
 
-    An interesting pattern is the variation in count of superiority between songs. In song 1, 2 and 5 the count is close to similar, but for song 3 and 4 the majority of people choose the Transfer-Americana. When we compare this to the technical evaluation we see the same pattern.... It could be that the composition and complexity in certain primers is more dependent on a bigger database of trained songs, than other primers. This is something to further analysis i future work.
+    An interesting pattern is the variation in count of superiority between songs in figure \ref{fig:songs}. In song 1-4 the count shows a clear overweight on Transfer-Americana, especially evident for song 3 and 4. For song 5 the count is close to similar. When we compare this to the technical evaluation we see the same pattern TODO: It could be that the composition and complexity in certain primers is more dependent on a bigger database of trained songs, than other primers. This is something to further analysis i future work. Scorings in figure \ref{fig:scores} returns many 3's and some 4's and 5's, but also 1's, indicating that some people think this is truly realistic music, while others condider human-made and generated music as two different worlds.
+
+    A third goal was to suggest a scheme for evaluating of music generated music. The combination of a quantitative system and two approaches of qualitative evaluation gives a broader view of the results, also touching upon the more subjective parts of an evaluation. The consistency of resuls over these evaluation forms gives a higher confidence in a total evaluation-result.
 
     
     \section{Conclusions and further development}
