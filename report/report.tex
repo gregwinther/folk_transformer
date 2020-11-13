@@ -299,11 +299,11 @@
     \section{Results}
 
     \subsection{Quantitative evaluation}
-        \begin{table}[]
+        \begin{table}
             \begin{center}
             \caption{
-                Results from quantitative evaluation
-                \label{tab:data}
+                Results from relative measurements of Intra-set distances.
+                \label{tab:q_results}
             }
             \begin{tabular}{l|rr|rr|rr}
             \multirow{3}{*}{} &
@@ -337,17 +337,25 @@
             \begin{figure}
                 \centering
                 \includegraphics[width=8.5cm, height=5cm]{gen_intra_gen_training_inter}
-                \caption{some label}
+                \caption{Visualisation of the KLD and OA of the Intra-set generated from Training set and the American/Transfer sets.}
                 \label{fig:gen_intra_gen_training_inter}
             \end{figure} 
             
             \begin{figure}
                 \centering
                 \includegraphics[width=8.5cm, height=5cm]{PCTMNLTM.eps}
-                \caption{some label}
+                \caption{Absolute measurements of average pitch class transition matrix (PCTM) and note length transition matrix (NLTM) from the Americana training set, Americana generated, transfer generated and maestro training set (sect IV.A.)}
+                \label{fig:absoluteNLTMPCTM}
             \end{figure} 
+         
+            For this evaluation we have picked 10 melodies from both the Americana dataset and the Maestro dataset, as well as using 10 different primers to generated 10 melodies with the Americana trained and the transfer trained sets. 
+
+            The results for the absolute measures of note length transition matrix \ref{fig:absoluteNLTMPCTM} shows us that the Americana/training dataset have a greater variety in note length than the maestro set. We can see that the melodies generated with the Americana dataset have similar variety, and that the melodies generated Transfer set influenced by the maestro set preservers most of variety. The result for pitch class transition matrices on the other hand shows a decrease in variety in the transfer generated song.
+
+            The results for the relative measurements shown in table \ref{tab:q_results} and figure \ref{fig:gen_intra_gen_training_inter}. From the comparisons we can see that both the Americana and Transfer sets have notably smaller mean values in the Intra-set across the board, apart from average inter-onset-interval (IOI). This does imply that there is less variation in the generated samples than the training set, while the time between each note also increases as seen in the IOI. We can also see that the transfer set does have twice as high mean than the Americana set which does indicate notable improvements in the generated melodies, however the standard deviation increases as well which implies that the mean in the transfer set is less reliable.
             
-        %TODO: Bjørn: Lager du en tekst til dette kapittelet.
+            Lastly, we will look at the Kullback–Leibler divergences (KLD) and Overlapping area (OA) for the Inter-sets generated for training-Americana and training-transfer as seen in figure \ref{fig:gen_intra_gen_training_inter}. We can see that the OA for the transfer set is greater for all the metrics which again indicates improvements in transfer over the Americana set. However, there is also an increase in the KLD for pitch count, note count and note length, which indicates that these metrics are less reliable.
+        
 
     \subsection{Qualitative evaluation}
     
@@ -360,11 +368,12 @@
              song (1 is worst, 5 is best)}
              \label{fig:songs}
         \end{figure} 
+
         Figure \ref{fig:songs} visualize a count of the number of votes, respectively for Transfer-Americana
         and Americana, for each of the 5 songs. The numbers in parenthesis below the Bars
         is the average rating for each of the songs, when compared to a realistic human made
         song (1 is worst, 5 is best). Inspecting the figure we see a general trend where Transfer-Americana is
-        favoured in 4 of 5 songs. Song 5 has equal score, but is also the song with the lowest 
+        clearly favoured in 4 of 5 songs. Song 5 has a closer score, and is also the song with the lowest 
         realistic-rating. A t-statistic was calculated for this result, describing a significant favouring of 
         Transfer-Americana, with a p-value of 0.07. These results verified the hypothesis that a music transformer model will perform better when it is based on the pretrained model, increasing the total number of music-samples, even though the base model was trained on the classical \textbf{MAESTRO} dataset. It must be pointed out the uncertainty related to the relatively low number of samples in the survey. 
         
@@ -374,6 +383,8 @@
 
     \section{Discussion}
     When we compare the results from the quantitative and qualitative evaluation we see the same trend ..
+
+    Important goals of the work was a) to verify that a model trained by transfer learning and therefore based on more samples will perform better, even though the base model constitute of songs of a different music genre, and b) show that it is possible to generate more complex music than generated in earlier related work. Results from qualitative and quantitative evaluation clearly shows that Transfer-Americana perform better than Americana, fullfilling goal a). Scorings from comparison with human-made music to some degree supports goal b), with an average rating of 2.6 of 5, but there is still a way to go. Especially for the songs from the Americana model, we see that the melodic part degrades faster than for Transfer-Americana, a pattern wich probably has affected the comparisons and the scoring.
 
     An interesting pattern is the variation in count of superiority between songs. In song 1, 2 and 5 the count is close to similar, but for song 3 and 4 the majority of people choose the Transfer-Americana. When we compare this to the technical evaluation we see the same pattern.... It could be that the composition and complexity in certain primers is more dependent on a bigger database of trained songs, than other primers. This is something to further analysis i future work.
 
