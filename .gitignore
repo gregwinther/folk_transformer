@@ -16,3 +16,9 @@ models/
 *.out
 *.synctex.gz
 
+# Other
+.vscode/
+report/.ipynb_checkpoints/
+
+
+
