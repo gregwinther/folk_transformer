@@ -1,4 +1,4 @@
-# Americana Folk musics transformer
+# Americana Folk music transformer
 
 This project is part of the final delivery in a course on 
 AI models at the University of Oslo.
