@@ -1,6 +1,13 @@
 \documentclass{IEEEtran}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
+\usepackage{listings}
+\lstset{
+    language=python,
+    basicstyle=\small\ttfamily,
+    frame=tb,
+    showstringspaces=false
+}
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{graphicx}
@@ -229,15 +236,19 @@ to the generated music files from the objective evaluation. In a second, and
 survey based part, a number of random people is asked to rate the different
 music files.
 
-\subsection{Modelling process} MIDI-files was first preprocessed to fit into
+\subsection{Modelling process}
+
+MIDI-files was first preprocessed to fit into
 the format used by the transformer model. This was carried out by utilizing
 an implementation of a transformer adapted for music, incorporated in a
 package from Musicautobot \cite{musicautobot}. Scripts for transfer learning
 and single learning were built around this package. Both models had the same
-model topology, used the same tuning parameters, and were trained on a
-supercomputer at University of Oslo with the following specification for xxx
-hours: %TODO: sebastian fyller du inn. Benedicte ville gjerne ha beskrevet
-workflow.
+model topology, used the same tuning parameters, and were trained on 
+four NVIDIA 0280TI GPUs at University of Oslo for approximately ten 
+hours each. The models had the following parameters, \lstinline|n_layers|=16
+\lstinline|d_model| = 512, \lstinline|d_head| = 64,
+\lstinline|n_head| = 8, \lstinline|d_inner| = 2048, \lstinline|mem_len| = 512,
+and \lstinline|batchsize| = 8.
 
 \subsection{Qantitative evaluation}
 
@@ -531,9 +542,6 @@ Some examples of grave rythmic errors were pointed out, for example
 long rest''.
 
 \section{Discussion}
-
-When we compare the results from the quantitative and
-qualitative evaluation we see the same trend ..
 
 Important goals of the work was 1) to verify that a model trained by transfer
 learning and therefore based on more samples will perform better, even though
