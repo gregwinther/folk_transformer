@@ -30,3 +30,12 @@ number have the same primer, i.e. the first three bars of music is the same.
 [Transfer Americana 4](/audio/transfer04.mp3)
 
 [Transfer Americana 5](/audio/transfer05.mp3)
+
+# A particularly interesting sample.
+
+[This piece of generated music](/audio/transfer10.mp3)
+we find particularly 
+interesting. We find that the predicted part of the 
+music from the transfer model contains polypony, 
+even though we only provide the music with a monophonic 
+primer.
