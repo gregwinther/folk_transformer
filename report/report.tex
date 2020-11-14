@@ -49,7 +49,7 @@ American Folk dataset \\
     more technically complex music such as jazz. Americana folk music can be seen
     as a stepping stone to more complex music. In this work we generate Americana
     folk music with 2 different approaches; transfer learning from the MAESTRO
-    dataset and solely traning on a dataset of Americana music.
+    dataset and solely training on a dataset of Americana music.
     Moreover, we propose
     a framework for the evaluation of these results in a quantitative and
     qualitative way, leaning on Evidence-Based Design 
@@ -70,7 +70,7 @@ American Folk dataset \\
 The attention-based transformer model \cite{vaswani2017attention}, is today
 recognised as the best performing sequential machine learning model,
 surpassing RNN-based models in most cases, mainly because of its
-superior memory efficiency and shorter training beacuse it is parallellizable.
+superior memory efficiency and shorter training because it is parallelizable.
 While originally applied to natural language processing (NLP),
 which today has mature implementations,
 the architecture can also be applied for other sequential learning tasks,
@@ -79,31 +79,25 @@ developed in the Magenta project is trained on the MAESTRO
 dataset~\cite{maestrodataset}. By setting a primer – a start music sequence,
 the model generates new music with good results along the same lines as the
 training set. With other primers than the regular and systematic classical
-music in \textbf{MAESTRO}, the quality of the output is varying.
+music in MAESTRO, the quality of the output is varying.
 
 Motivated by generating more irregular music, one of the main goals of this
 work is to describe a framework for the quality assessment of different
 approaches to the generation of music with the transformer model. We compare
 two different Transformer implementations and use our proposed evaluation
-framework to assess the quality of each approach.
-% Seb: I want to remove this sentence
-% It is not known to the
-% authors scientific papers describing such a comparison of music transformers.
-At the core of such an evaluation framework is  an evaluation format that
-combines a form of quantitative and qualitative evaluation technique.
+framework to assess the quality of each approach. At the core of such an evaluation framework is an evaluation format that combines a form of quantitative and qualitative evaluation technique.
 
 To this end, we wish to employ the transformer music to a subgenre of music
 to which such a model has not been extensively applied. Initial findings from
 applying the transformer to jazz music has shown some
 limitations~\cite{wu2020jazz}, applying LSTM networks to Blues has been
 moderately succesful~\cite{eck2002bluesLSTM} and applying the transformer
-model to pop music seems to work well~\cite{huang2020pop}. From a music
-theory standpoint this is very sensible - classical music often has formal
-rules, the epitome of which is the fugue~\cite{giraud2015computational}; and
+model to pop music seems to work well~\cite{huang2020pop}. This may be due 
+to the rules and structure of pop and classical music - classical music often 
+has formal rules, the epitome of which is the fugue~\cite{giraud2015computational}; and
 pop music follows some very clear norms~\cite{hennion1983production}. While
 even Free Jazz has \emph{some} rules, it readily falls into the category of
-the type of rhytmic music with the least amount of structure, per the
-definition that it is ``characterized by the absence of set chord patterns or
+the type of rhythmic music with the least amount of structure, that it is ``characterized by the absence of set chord patterns or
 time patterns''\cite{FreeJazz}.
 
 American roots music, encompassing spirituals, cajun music, cowboy music,
@@ -111,18 +105,15 @@ work songs, but also early blues such as Dixieland; from now on referred to
 as ``Americana'', presents itself as hitherto unexplored territory. It also
 provides a nice stepping stone towards more ``unstructured'' music as it
 often allows for improvisation, but otherwise retains a relatively rigid
-structure~\cite{libcong}. We have therefor collected a dataset of MIDI files
+structure~\cite{libcong}. We have therefore collected a dataset of MIDI files
 of Americana music, which we will use in our quality assessment framework.
-A secondary goal, but less important in light of the main motivation is
-therefore to realisticly generate Americana music with the transformer
+A secondary goal is therefore to realistically generate Americana music with the 
+transformer
 architecture. A natural aim in the process-steps is to investigate the
 superiority of music generators based on a significantly higher number of
 songs, even though this could be music from other genres, by utilizing
 transfer learning from the MAESTRO dataset in the music transformer
 \cite{huang2018music}.
-% Seb: I want to remove this sentence. Or reformulate..?
-% Our goals are tightly interconnected, typicly
-% superseeding each other in process-steps.
 
 \section{Related work}
 
@@ -132,15 +123,15 @@ are sequential models, but the attention principle at the core of the
 transformer facilitates remembering coherence over longer sections of
 sequences and highlights especially important sections. From generating music
 of 10s of seconds with RNNs, it is now possible to generate a minute of
-coherent realistic music~\cite{huang2018music}. Still there is a lot of
+coherent realistic music~\cite{huang2018music}. Still, there is a lot of
 unresolved challenges, like generating long sections over some minutes, in
-highly irregular compositions and multi channel or many-instrumental signals.
-To combat these challenges the improvement of the transformer model has high
+highly irregular compositions and multi-channel or many-instrumental signals.
+To combat these challenges the improvement of the transformer model has a high
 focus in the research community. Some of the most recent attempts are the
 Transformer-XL~\cite{dai2019transformerxl} and the
 Reformer~\cite{kitaev2020reformer}.
 The Reformer claims to be trained on a standard computer with a single GPU.
-In this analysis we will utilize and adaption of the Transformer-XL
+In this analysis, we will utilize and adaption of the Transformer-XL
 architecture for music.
 
 \subsection{Music transformers}
@@ -155,20 +146,21 @@ this work. In the pop music transformer \cite{huang2020pop} pop piano music
 is generated by the transformer, a setting quite similar to the classical
 piano music in \cite{huang2018music}.
 
-Another paper describes the Jazz transformer~\cite{wu2020jazz} which is in
+Increasing the complexity of music generated, \citeauthor{wu2020jazz} describes the Jazz transformer which is in
 the other end of the spectrum related to complexity. Here the
 Transformer-XL architecture is utilized to model lead sheets of jazz music.
-Moreover, the model endeavors to incorporate structural events present in the
-Weimar Jazz Database (WJazzD) for inducing structures in the generated music.
-Even though the training loss values are low, the results are not impressive.
+Moreover, the model endeavours to incorporate structural events present in the
+Weimar Jazz Database (WJazzD) for inducing structures in the generated music, 
+the results are not impressive according to subjective listening tests and technical 
+evaluation based on pitch class histogram entropy.
 Listening tests shows a clear gap between the ratings of the generated and
 real compositions. The work analyses the missing parts and presents a
-prediction system which in an analytical manner shed light on why
+prediction system which analytically shed light on why
 machine-generated music to date still falls short of the artwork of humans.
 This includes analyzing the statistics of the pitch class, grooving, and
-chord progression, assessing the structureness of the music with the help of
+chord progression, assessing the structures of the music with the help of
 the fitness scape plot, and evaluating the model’s understanding of Jazz
-music. The evalutation scheme and the failure to generate such complex music
+music. The evaluation scheme and the failure to generate such complex music
 is relevant in the generation of Americana.
 
 In a system called LakhNES,
@@ -188,18 +180,20 @@ with the transformer is a relevant foundation for use of transfer learning in
 this work.
 
 \citeauthor{gan2020foley} use the transformer architecture to generate music,
-but with another approach. In a system called Foley Music they synthesize
+but with another approach. In a system called Foley Music, they synthesize
 music from a silent video about people playing
 instruments~\cite{gan2020foley}. A relationship between body keypoints and
 classical MIDI recordings is established. Music generation is then formulated
 as a motion-to-MIDI translation problem, represented with a graph transformer
-framework that predict MIDI from motion. By testing the generator on
-different music performances the results is proven to outperform several
-existing systems in music generation.
+framework that predicts MIDI from motion. By testing the generator on
+different music performances the results are proven to outperform several
+existing systems in music generation, again for classical music, but now not only piano music.
 
-However, there is little work on generating intentionally the same music
-generator with different approaches. Another new approach is to use transfer
-learning from an existing high performance music model.
+Summarized there are a few examples of successfully generating music with the transformer, mainly with classical music. However, there is little work on 
+generating intentionally the same music generator with different approaches, 
+as will be the case in our work. Another new approach is to use transfer
+learning from an existing high-performance music model, opposed from the 
+"simpler" NES-MDB dataset.
 
 \subsection{Evaluation of AI-generated music}
 
@@ -208,8 +202,8 @@ music generation based on machine learning we would like to point out the
 works by \citeauthor{1030094}~\cite{1030094},
 \citeauthor{yang2020evaluation}~\cite{yang2020evaluation} and
 \citeauthor{wu2020jazz}~\cite{wu2020jazz}. These works describe either a
-qualitative evaluation or a qualitative evaluation. In our attempt we combine
-these two approaches in an attempt to establish a common framework.
+qualitative evaluation or a qualitative evaluation. In our attempt we elaborate 
+on this and combine the two approaches in a proposal of a common framework.
 
 \section{Methods}
 
@@ -226,8 +220,8 @@ The hypothesis is that the transfer learning model will result in the best
 performing
 model, but an important issue is what makes up the best model and how to
 evaluate such a subjective "sequence-result" as music in a fair and
-trustworthy manner. Some will say this is an impossible task~\cite{1030094}.
-Will a transfer learning model be significantly better than only training on
+trustworthy manner. The objective is to investigate if the transfer learning 
+model is performing significantly better than a model only trained on
 a single dataset, such as has been shown in other ML applications, like image
 classification~\cite{7404017}, even though the MAESTRO dataset is totally
 different from the Americana dataset.
@@ -236,27 +230,13 @@ An attempt to sort this out is by evaluating in a quantitative and
 qualitative way. The quantitative, hence objective, way can shortly be
 described as a technical comparison of the predicted signal and the real
 signal. Principles by \citeauthor{yang2020evaluation}~\cite{yang2020evaluation}
-and \citeauthor{wu2020jazz}~\cite{wu2020jazz} will be utilized.
+and \citeauthor{wu2020jazz}~\cite{wu2020jazz} will be utilized, further described 
+in the section below.
 
 The qualitative part constitutes a music expert judgement, based on listening
 to the generated music files from the objective evaluation. In a second, and
-survey-based part, a number of random people is asked to rate the different
+survey-based part, 12 random persons are asked to rate the different
 music files.
-
-\subsection{Modelling process}
-
-MIDI-files was first preprocessed to fit into
-the format used by the transformer model. This was carried out by utilizing
-an implementation of a transformer-XL~\cite{dai2019transformerxl}, adapted for 
-music, incorporated in a
-package called Musicautobot~\cite{musicautobot}. Scripts for transfer learning
-and single learning were built around this package. Both models had the same
-model topology, used the same tuning parameters, and were trained on 
-four NVIDIA 2080TI GPUs at University of Oslo for approximately ten 
-hours each. The models had the following parameters, \lstinline|n_layers|=16
-\lstinline|d_model| = 512, \lstinline|d_head| = 64,
-\lstinline|n_head| = 8, \lstinline|d_inner| = 2048, \lstinline|mem_len| = 512,
-and \lstinline|batchsize| = 8.
 
 \subsection{Qantitative evaluation}
 
@@ -265,11 +245,25 @@ toolbox \lstinline|mgeval|~\cite{yang2020evaluation}.
 The toolbox extracts absolute
 metrics from MIDI files, which allows for inspection of properties of the
 dataset used for training and the generated dataset. The features extracted
-for absolute measures are divided into pitch-based features Pitch count (PC),
-Pitch class histogram (PCH), Pitch class transition matrix (PCTM), pitch
-range (PR) and Average pitch interval (PI); and rhythm-based features, Note
-count (NC), Average inter-onset-interval (IOI), Note length histogram (NLH)
-and Note length transition matrix (NLTM). These metrics can then be used to
+for absolute measures are divided into pitch-based features:
+\begin{itemize}
+    \item Pitch count (PC)
+    \item Pitch class histogram (PCH)
+    \item Pitch class transition matrix (PCTM)
+    \item Pitch range (PR)
+    \item Average pitch interval (PI)
+\end{itemize}
+
+and rhythm-based features:
+
+\begin{itemize}
+    \item Note count (NC)
+    \item Average inter-onset-interval (IOI)
+    \item Note length histogram (NLH)
+    \item Note length transition matrix (NLTM)
+\end{itemize}
+
+These metrics can then be used to
 acquire the relative metrics between datasets with the use of exhaustive
 cross-validation to acquire the distance between each sample of the same set
 (intra-dataset) and another set (inter-dataset).
@@ -305,12 +299,27 @@ liked best in each pair of songs. In addition they had to rate the best
 version related to how realistic it was compared to human generated music.
 The range was 1 (worst) to 5 (best).
 
+\subsection{Modelling process}
+
+MIDI-files was first preprocessed to fit into
+the format used by the transformer model. This was carried out by utilizing
+an implementation of a transformer-XL~\cite{dai2019transformerxl}, adapted for 
+music, incorporated in a
+package called Musicautobot~\cite{musicautobot}. Scripts for transfer learning
+and single learning were built around this package. Both models had the same
+model topology, used the same tuning parameters, and were trained on 
+four NVIDIA 2080TI GPUs at University of Oslo for approximately ten 
+hours each. The models had the following parameters, \lstinline|n_layers|=16
+\lstinline|d_model| = 512, \lstinline|d_head| = 64,
+\lstinline|n_head| = 8, \lstinline|d_inner| = 2048, \lstinline|mem_len| = 512,
+and \lstinline|batchsize| = 8.
+
 \section{Datasets}
 
 A brief summary of each of the datasets we have used in this study can be
 found in \autoref{tab:data}.
 
-\textbf{MAESTRO}~\cite{maestrodataset} (MIDI and Audio Edited for Synchronous
+MAESTRO~\cite{maestrodataset} (MIDI and Audio Edited for Synchronous
 TRacks and Organization) is a dataset with over 200 hours of virtuosic piano
 perfomances captured with a fine alignment of approximately 3ms between note
 labels and audio waveforms.
@@ -321,14 +330,13 @@ pianists perform on Yamaha Disklaviers which, in addition to being
 concert-quality acoustic grand pianos, utilize integrated high-precision MIDI
 capture and playback.
 
-Since the \textbf{MAESTRO} dataset contains MIDI recordings from competions,
+Since the MAESTRO dataset contains MIDI recordings from competions,
 the pieces are from a select set for each year. This means that many of the
 pieces are the same, but may includes much variation within each performer's
 interpretation of the piece.
 
-The \textbf{Americana} dataset is constructed from musical scores by Benjamin
-Robert Tubb\footnote{These were scraped from a webpage that has since been
-taken down. Consequently, we are unable to provide a proper reference}. These
+The Americana dataset is constructed from musical scores by Benjamin
+Robert Tubb \footnote{sourced online}. These
 scores are in the public domain and composed between the ealry 1800s and
 1922. The genres range from blues, ragtime, naval songs, hyms, minstrel songs
 and spirituals.
@@ -412,7 +420,7 @@ The results for the absolute measures of note length transition matrix
 in \autoref{fig:absoluteNLTMPCTM} shows us that the Americana/training dataset have
 a greater variety in note length than the MAESTRO set (comparing similarity 
 between column 1 and 4). We can see that the
-melodies generated with the Americana dataset have similar variety, and that
+melodies generated with the Americana dataset have similar variety and that
 the melodies generated with the Transfer set influenced by the MAESTRO set preservers
 most variety (comparing column 2 and 3 with the real melodies in column 1). 
 The result for pitch class transition matrices on the other
@@ -427,7 +435,7 @@ the generated samples than the training set, while the time between each note
 also increases as seen in the IOI. We can also see that the transfer set does
 have twice as high mean than the Americana set which does indicate notable
 improvements in the generated melodies, however the standard deviation
-increases as well which implies that the mean in the transfer set is less
+increases as well which imply that the mean in the transfer set is less
 reliable.
 
 Lastly, we will look at the Kullback–Leibler divergences (KLD) and
@@ -480,10 +488,10 @@ based on the pre-trained model, increasing the total number of music samples,
 even though the base model was trained on the classical MAESTRO
 dataset. It must be pointed out the uncertainty related to the relatively low
 number of samples in the survey. In \autoref{fig:scores} a boxplot is
-visualizing the single scorings in a more detailed manner. Red points marks
+visualizing the single scorings in a more detailed manner. Red points mark
 all the single scorings. The median for song 1 through 4 has a score of 3 and also
 single scorings of 4 and 5, indicating that some people consider the songs as
-comparable to human made music.
+comparable to human-made music.
 
 In this survey some people have made comments about the overall performance,
 focusing more on the subjective experience. We bring some of the more
@@ -574,58 +582,58 @@ long rest''.
 
 Our main goal was to propose a framework for the evaluation of music generated
 by machine learning with a Transformer architecture.
-The combination of a quantitative system and two approaches of qualitative
+The combination of a quantitative system and two approaches to qualitative
 evaluation is undoubtedly a step in this direction, giving a broader view of 
 the results, also touching upon the more
 subjective parts of an evaluation. We find that the guidelines provided by 
 the musicians and the survey were in line with what the quantitative evaluation 
 toolbox \lstinline|mgeval|~\cite{yang2020evaluation} is trying to 
-do. However, we emphasise the need for such quantitative tools to have basis
+do. However, we emphasise the need for such quantitative tools to have the basis
 in an expert opinion as suggested by the ECD
 framework~\cite{mislevy2003focus,mislevy2017evidence}.
 
 A naturally related goal of the work was 1) to verify that a model trained by transfer
 learning and therefore based on more samples will perform better, even though
-the base model constitute of songs of a different music genre, and 2) show
+the base model constitutes of songs of a different music genre, and 2) show
 that it is possible to generate more complex music than generated in earlier
 related work. Results from qualitative and quantitative evaluation clearly
-show that Transfer-Americana perform better than Americana, fullfilling goal
+show that Transfer-Americana perform better than Americana, fulfilling goal
 1). Scorings from comparison with human-made music to some degree supports
 goal 2), with an average rating of 2.6 of 5, but there is still a way to go.
 Especially for the songs from the Americana model, we see that the melodic
-part degrades faster than for Transfer-Americana, a pattern wich probably has
+part degrades faster than for Transfer-Americana, a pattern which probably has
 affected the comparisons and the scoring.
 
 An interesting pattern is the variation in count of superiority between songs
-in figure \ref{fig:songs}. In song 1-4 the count shows a clear overweight on
+in figure \ref{fig:songs}. In song 1-4, the count shows a clear overweight on
 Transfer-Americana, especially evident for song 3 and 4. For song 5 the count
 is close to similar. When we compare this to the technical evaluation there is 
 support in this pattern for song 1-4. For song 3 and 4 there is a longer distance 
 between Americana and Transfer-Americana and the difference between the 2 versions 
 should be higher. It could be that the composition and complexity in
-certain primers is more dependent on a bigger database of trained songs, than
-other primers. This is something to further analyse i future work. Scorings
-in figure \ref{fig:scores} returns many 3's and some 4's and 5's, but also
+certain primers are more dependent on a bigger database of trained songs, than
+other primers. This is something to further analyse in future work. Scorings
+in figure \ref{fig:scores} return many 3's and some 4's and 5's, but also
 1's, indicating that some people think this is truly realistic music, while
-others condider human-made and generated music as two different worlds.
+others condsider human-made and generated music as two different worlds.
 
 Processing of data and adapting a framework to fit our problem 
-took an extrordinary amount of time. Optimally the models should have been
+took an extraordinary amount of time. Optimally the models should have been
 trained for a longer period, and the resulting model is a minimal viable model.
-Transformer models can be monstruous 
+Transformer models can be monstrous 
 an unwieldy structures, illustrated by this quote from
 \citeauthor{vaswani2017attention}: ``The Transformer allows for significantly
 more parallelization and can reach a new state of the art in translation
 quality after being trained for as little as twelve hours on eight P100 GPUs''.
 We find it odd to assume that it is normal to have access to a rack of eight 
 professional-grade GPUs~\cite{vaswani2017attention}, illustrating the importance
-of a further development of the transformer to increase the efficiency 
+of further development of the transformer to increase the efficiency 
 \cite{kitaev2020reformer}.
 
 \section{Conclusions and further development}
 
 An evaluation framework spanning over quantitative and qualitative techniques
-clearly give a broader evaluation basis for music generated by machine learning 
+give a broader evaluation basis for music generated by machine learning 
 based on the transformer architecture. Utilizing this framework to evaluate two different 
 approaches for generating Americana music gave confidence in the superiority of a 
 transfer learning based model (trained on the MAESTRO dataset) over a model solely
@@ -635,8 +643,8 @@ Resulting songs generated by three-bar Americana primers was to some degree eval
 be relatively close to human made music, with major differences between different melodies.
 
 Combining the evaluation metrics in a more schematic way could be a further development, 
-possibly classifying generated music in classes based on input values as;
-music genre, personal listening-profile and musical background.
+possibly classifying generated music in different classes based on qualitative and quantitative 
+measures. 
 
 We think that interviews with composers and musician about what makes ``good'' music 
 is warranted. Moreover, we find it interesting to present AI-generated 
