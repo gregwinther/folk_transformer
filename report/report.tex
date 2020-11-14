@@ -414,7 +414,6 @@ which again indicates improvements in transfer over the Americana set.
 However, there is also an increase in the KLD for pitch count, note count and
 note length, which indicates that these metrics are less reliable.
 
-
 \subsection{Qualitative evaluation}
 
 \begin{figure}
@@ -476,8 +475,60 @@ opinions. You should also clearly state what the scale from 1 to 5 is meant
 to be ranging across. Is it for instance meant to be from "clearly a robot
 has made this" to "could be made by an expert composer"?} \end{enumerate}
 
-Evaluation carried out in interview with musicians resulted in.... %TODO:
-Sebastian
+Several sampels of generated music were played for three
+professional musicians and composers. All of these have degrees in
+either music performance or composition, and few experience with 
+songwriting as well performing music within a few of the subgenres of 
+Americana, namely blues and folk. None of the musicians have any 
+exprience or great knowledge of methods from ML or AI.
+
+After a brief introduction to the concept of AI-generated music,
+all of the musicians 
+volunteered genres that would be easiest for a computer to generate. 
+Classical music, especially baroque, blues and pop were all mentioned, 
+as music within these genres ``have specific rules'' and that 
+``there exists a recipe'' for these genres. When asked if they could
+name genres that 
+they thought would be difficult to model jazz was a frequent response.
+This is initial hunch is interesting because 
+it coincides with the space of genres that spans the current work on music 
+and AI.
+
+The concensus amongst the musicians were that the music generated from 
+the transfer-based model was best compared with the other model, but they
+all emphasised that in absolute terms the generated music was not be 
+considered good.
+
+From the comments, some general guidelines for music assessment can be 
+extracted. Broadly summed up, one would like a musical piece to
+``follow the rules'' both when it comes to rythm and scale, but also to 
+``break the rules'' enough to make the piece interesting, but not 
+chaotic. Preservation of long-term structure is important:
+``it used the same stuff again!'', was loudly exclaimed 
+by one of the musicians after a musical theme was repeated in one of the 
+pieces.
+
+Regarding scales and pitch variation, some interesting comments were 
+made that exemplifies a common theme amongst our panel of experts;
+"It sounds like a child, who has just learned a new scale, trying 
+to remember which notes are correct by testing different ones." 
+The musician that made this comment was asked to elaborate and 
+said that it is okay to veture outside the designated scale of the 
+composition to create suspense, but that the generated music tended 
+to do this very suddenly and without any transtion to the new 
+regime. Moreover, "a structural break
+can be nice to capture the attention of the listener, but don't overdo
+it". The musicians quickly adapted to a certain listening mindset, and
+started counting ``errors'' the models made; ``in this piece there was 
+only three scale breaches. Not too bad.'' Some musicians pointed to sections 
+in the music that appeared to them as ``correct'' structural breaks, but 
+though that the model seemed ``confues itself'' by introducing them.
+
+The musician thought that the models performance regarding rythm 
+was wide-ranging, but seemed better than the ``scale rule-breaking''.
+Some examples of grave rythmic errors were pointed out, for example
+``that dotted note was incredibly weird!'' and  ``what a very sudden 
+long rest''.
 
 \section{Discussion}
 
@@ -500,7 +551,7 @@ An interesting pattern is the variation in count of superiority between songs
 in figure \ref{fig:songs}. In song 1-4 the count shows a clear overweight on
 Transfer-Americana, especially evident for song 3 and 4. For song 5 the count
 is close to similar. When we compare this to the technical evaluation we see
-the same pattern TODO: It could be that the composition and complexity in
+the same pattern. It could be that the composition and complexity in
 certain primers is more dependent on a bigger database of trained songs, than
 other primers. This is something to further analysis i future work. Scorings
 in figure \ref{fig:scores} returns many 3's and some 4's and 5's, but also
@@ -512,7 +563,6 @@ The combination of a quantitative system and two approaches of qualitative
 evaluation gives a broader view of the results, also touching upon the more
 subjective parts of an evaluation. The consistency of resuls over these
 evaluation forms gives a higher confidence in a total evaluation-result.
-
 
 
 \section{Conclusions and further development}
