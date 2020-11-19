@@ -43,7 +43,8 @@ American Folk dataset \\
 
 \begin{abstract}
     Since the publication of the music transformer in 2017,
-    music generators based on the transformer architecture has been state of the
+    music generators based on machine learning (ML) with the transformer architecture 
+    has been state of the
     art, making it possible to generate realistic music for over a minute. Up to now
     the results have mainly been succesful for classical piano music, but have failed for
     more technically complex music such as jazz. Americana folk music can be seen
@@ -57,7 +58,7 @@ American Folk dataset \\
     assessment indicate that both models have been moderately succesful, and the
     model based on transfer learning is favoured. In a rating process people have
     rated the songs to in average 2.6, where 1 is not realistic and 5 is
-    realistic, compared to "real" human-made music.
+    realistic.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -81,18 +82,23 @@ the model generates new music with good results along the same lines as the
 training set. With other primers than the regular and systematic classical
 music in MAESTRO, the quality of the output is varying.
 
-Motivated by generating more irregular music, one of the main goals of this
-work is to describe a framework for the quality assessment of different
-approaches to the generation of music with the transformer model. We compare
+A \textbf{main goal} of this work is to describe a framework for the quality assessment of different
+approaches to the generation of music with the transformer model. This is further
+motivated by the attempt to generate, and hence evaluate, more varied music than 
+up to now has been successfully generated. We compare
 two different Transformer implementations and use our proposed evaluation
-framework to assess the quality of each approach. At the core of such an evaluation framework is an evaluation format that combines a form of quantitative and qualitative evaluation technique.
+framework to assess the quality of each approach. At the core of such an evaluation framework is an evaluation format that combines a form of quantitative and qualitative evaluation technique. 
+In ML-modelling dealing with a creative art like music, the subjective 
+experience of the result will be an important part in the evaluation, hence the importance of increasing 
+the evaluation scheme from the purely technical approach that is normal for most 
+ML-models.
 
-To this end, we wish to employ the transformer music to a subgenre of music
+To this end, we wish to employ the transformer music model to a subgenre of music
 to which such a model has not been extensively applied. Initial findings from
 applying the transformer to jazz music has shown some
 limitations~\cite{wu2020jazz}, applying LSTM networks to Blues has been
 moderately succesful~\cite{eck2002bluesLSTM} and applying the transformer
-model to pop music seems to work well~\cite{huang2020pop}. This may be due 
+model to pop piano music seems to work well~\cite{huang2020pop}. This may be due 
 to the rules and structure of pop and classical music - classical music often 
 has formal rules, the epitome of which is the fugue~\cite{giraud2015computational}; and
 pop music follows some very clear norms~\cite{hennion1983production}. While
@@ -107,13 +113,19 @@ provides a nice stepping stone towards more ``unstructured'' music as it
 often allows for improvisation, but otherwise retains a relatively rigid
 structure~\cite{libcong}. We have therefore collected a dataset of MIDI files
 of Americana music, which we will use in our quality assessment framework.
-A secondary goal is therefore to realistically generate Americana music with the 
+A \textbf{secondary goal} is therefore to realistically generate Americana music with the 
 transformer
-architecture. A natural aim in the process-steps is to investigate the
+architecture. A natural \textbf{third goal} in the process-steps is to investigate the
 superiority of music generators based on a significantly higher number of
 songs, even though this could be music from other genres, by utilizing
 transfer learning from the MAESTRO dataset in the music transformer
 \cite{huang2018music}.
+
+In the next chapter (II) we present related work that we have elaborated on, both
+dealing with music generation and music evaluation. Chapter III deals with methods  
+used for evaluation and modelling. In chapter IV we describe the 2 musical datasets.
+Chapter V and VI describes results and discussion, before chapter 7 illustrate 
+challenges and sum up conclusions.
 
 \section{Related work}
 
@@ -123,7 +135,7 @@ are sequential models, but the attention principle at the core of the
 transformer facilitates remembering coherence over longer sections of
 sequences and highlights especially important sections. From generating music
 of 10s of seconds with RNNs, it is now possible to generate a minute of
-coherent realistic music~\cite{huang2018music}. Still, there is a lot of
+coherent realistic music~\cite{huang2018music}. Still, there are a lot of
 unresolved challenges, like generating long sections over some minutes, in
 highly irregular compositions and multi-channel or many-instrumental signals.
 To combat these challenges the improvement of the transformer model has a high
@@ -136,7 +148,7 @@ architecture for music.
 
 \subsection{Music transformers}
 
-In the few existing papers considering music
+In the existing papers considering music
 generation Transformer models we want to emphasize some important related
 works besides the aforementioned music transformer, built on the classical
 piano music dataset MAESTRO. These works are somewhat diversified in
@@ -144,7 +156,7 @@ different music genres, describing the span of existing music genres
 generated by the transformer, "setting the stage" for the Americana music in
 this work. In the pop music transformer \cite{huang2020pop} pop piano music
 is generated by the transformer, a setting quite similar to the classical
-piano music in \cite{huang2018music}.
+piano music in the music transformer \cite{huang2018music}.
 
 Increasing the complexity of music generated, \citeauthor{wu2020jazz} describes the Jazz transformer which is in
 the other end of the spectrum related to complexity. Here the
@@ -197,13 +209,14 @@ learning from an existing high-performance music model, opposed from the
 
 \subsection{Evaluation of AI-generated music}
 
-In the evaluation of models of
-music generation based on machine learning we would like to point out the
-works by \citeauthor{1030094}~\cite{1030094},
-\citeauthor{yang2020evaluation}~\cite{yang2020evaluation} and
-\citeauthor{wu2020jazz}~\cite{wu2020jazz}. These works describe either a
-qualitative evaluation or a qualitative evaluation. In our attempt we elaborate 
-on this and combine the two approaches in a proposal of a common framework.
+In the evaluation of music generation models based on machine learning we would like to point out the
+works by \citeauthor{yang2020evaluation}~\cite{yang2020evaluation} describing the technical 
+evaluation system mgeval, utilized in this work,
+\citeauthor{wu2020jazz}~\cite{wu2020jazz} describing a system of qualitative listening 
+tests and 5 objecitive measurements of the structure in the music, and lastly the qualitative 
+evaluation measures carried out by \citeauthor{sturm2017taking}
+\cite{sturm2017taking}, focusing both on qualitative interviews and statistics about the 
+generated notes. These works describe qualitative and quantiative evaluations between \textbf{real music and a generated music}. In this work we elaborate  on these works and combine approaches in a proposal of a common framework for evaluating \textbf{different} transformer models for music generation.
 
 \section{Methods}
 
@@ -216,7 +229,7 @@ Americana music is generated in 2 different model concepts:
         Americana dataset.
 \end{enumerate}
 
-The hypothesis is that the transfer learning model will result in the best
+We hypothesise that the transfer learning model will result in the best
 performing
 model, but an important issue is what makes up the best model and how to
 evaluate such a subjective "sequence-result" as music in a fair and
@@ -227,7 +240,8 @@ classification~\cite{7404017}, even though the MAESTRO dataset is totally
 different from the Americana dataset.
 
 An attempt to sort this out is by evaluating in a quantitative and
-qualitative way. The quantitative, hence objective, way can shortly be
+qualitative way, as will be the charecteristics in our work. 
+The quantitative, hence objective, way can shortly be
 described as a technical comparison of the predicted signal and the real
 signal. Principles by \citeauthor{yang2020evaluation}~\cite{yang2020evaluation}
 and \citeauthor{wu2020jazz}~\cite{wu2020jazz} will be utilized, further described 
@@ -286,6 +300,8 @@ a thematically organized and prioritized list of knowledge and practices to
 assess. Specific to our study, we find it necessary to talk to professional
 musicians and composers in order to uncover what actually makes a good
 composition.
+The method described has similarities with studies performed by \citeauthor{sturm2017taking}
+\cite{sturm2017taking}.
 
 To supplement the qualitative evaluation a survey was distributed to
 random people with unknown backgrounds. The participants were presented to 5
@@ -294,7 +310,7 @@ facilitated in a Google survey form.
 The songs were generated by sending a primer of the first three bars
 (five seconds) of five different original songs from the Americana dataset to the
 trained model. Each song were presented in two versions, one generated by
-Transfer-Americana and one by Americana. They had to choose the one they
+Transfer-Americana and one by Americana. The participants had to choose the one they
 liked best in each pair of songs. In addition they had to rate the best
 version related to how realistic it was compared to human generated music.
 The range was 1 (worst) to 5 (best).
@@ -430,10 +446,10 @@ The results for the relative measurements shown in \autoref{tab:q_results}
 and \autoref{fig:gen_intra_gen_training_inter}. From the comparisons we
 can see that both the Americana and Transfer sets have notably smaller mean
 values in the Intra-set across the board, apart from average
-inter-onset-interval (IOI). This does imply that there is less variation in
+inter-onset-interval (IOI). This imply that there is less variation in
 the generated samples than the training set, while the time between each note
-also increases as seen in the IOI. We can also see that the transfer set does
-have twice as high mean than the Americana set which does indicate notable
+also increases as seen in the IOI. We can also see that the transfer set
+have twice as high mean than the Americana set which indicate notable
 improvements in the generated melodies, however the standard deviation
 increases as well which imply that the mean in the transfer set is less
 reliable.
@@ -494,32 +510,15 @@ single scorings of 4 and 5, indicating that some people consider the songs as
 comparable to human-made music.
 
 In this survey some people have made comments about the overall performance,
-focusing more on the subjective experience. We bring some of the more
-noteworthy comments;
-
-\begin{displayquote}
-The songs appear to all
+focusing more on the subjective experience. A common comment were that the songs appear to all
 get worse the longer they go on, as in the notes get more sparse and less
-cohesive. They both also has a thing of really going all the way through a
-scale, playing every note, to get somewhere. These two things make it very
-clear it is not a trained human playing
-\end{displayquote}
-
-\begin{displayquote}
-There appeared to be
-some strange audio artefacts (reverb/echo-like) on a few of the tracks,
-particularly transfer americana 2. Also, it might have been better if the
-songs from the different generators were shuffled for each question, so we
-didn't naturally consider the differences between the two.
-\end{displayquote}
-
-\begin{displayquote}
-Which song is made by which algorithm should be secret, as it will colour our
-opinions. You should also clearly state what the scale from 1 to 5 is meant
-to be ranging across. Is it for instance meant to be from "clearly a robot
-has made this" to "could be made by an expert composer"?   
-\end{displayquote}
-
+cohesive. The songs also seem to go all the way through a
+scale. Such patterns make it very clear it is not a trained human playing
+Another frequent comment was that it might have been better if the
+songs from the different generators were shuffled for each question so the listeners
+didn't naturally consider the differences between the two. This issue could 
+color each opinion. Lastly it was the meaning of each 
+rate in the scoring system was unclear related the human level of music composition.
 
 \subsubsection{Expert Interviews}
 
@@ -578,9 +577,15 @@ Some examples of grave rythmic errors were pointed out, for example
 ``that dotted note was incredibly weird!'' and  ``what a very unexpected 
 long rest''.
 
+The results from the interview session is much in line with results described 
+by \citeauthor{sturm2017taking} ~\cite{sturm2017taking}, collecting this kind 
+of information from a website presenting generated 
+music with RNN-based models. However, an important difference is the lack of 
+desription of music background from the evaluators in that study. 
+
 \section{Discussion}
 
-Our main goal was to propose a framework for the evaluation of music generated
+Our goal nr 1 was to propose a framework for the evaluation of music generated
 by machine learning with a Transformer architecture.
 The combination of a quantitative system and two approaches to qualitative
 evaluation is undoubtedly a step in this direction, giving a broader view of 
@@ -592,14 +597,14 @@ do. However, we emphasise the need for such quantitative tools to have the basis
 in an expert opinion as suggested by the ECD
 framework~\cite{mislevy2003focus,mislevy2017evidence}.
 
-A naturally related goal of the work was 1) to verify that a model trained by transfer
+A naturally related goal nr 2 of the work was to verify that a model trained by transfer
 learning and therefore based on more samples will perform better, even though
-the base model constitutes of songs of a different music genre, and 2) show
+the base model constitutes of songs of a different music genre, and as goal nr 3 show
 that it is possible to generate more complex music than generated in earlier
 related work. Results from qualitative and quantitative evaluation clearly
 show that Transfer-Americana perform better than Americana, fulfilling goal
-1). Scorings from comparison with human-made music to some degree supports
-goal 2), with an average rating of 2.6 of 5, but there is still a way to go.
+2. Scorings from comparison with human-made music to some degree supports
+goal 3, with an average rating of 2.6 of 5, but there is still a way to go.
 Especially for the songs from the Americana model, we see that the melodic
 part degrades faster than for Transfer-Americana, a pattern which probably has
 affected the comparisons and the scoring.
@@ -641,16 +646,18 @@ trained on the Americana dataset.
 
 Resulting songs generated by three-bar Americana primers was to some degree evaluated to 
 be relatively close to human made music, with major differences between different melodies.
-
-Combining the evaluation metrics in a more schematic way could be a further development, 
-possibly classifying generated music in different classes based on qualitative and quantitative 
-measures. 
+However, the number of samples in the different evaluation approaches was relatively small. 
+To increase the confidence in the results, a further work will be to massively scale up, both the 
+number of generated songs for the the technical evaluation and the number of persons in the 
+qualitative analysis.
 
 We think that interviews with composers and musician about what makes ``good'' music 
 is warranted. Moreover, we find it interesting to present AI-generated 
-music to musical experts in the manner we have done to be particularly beneficial.
+music to musical experts in the manner we have done to be particularly beneficial. 
 An extension of this venue of research to consist of individual interviews
-and also contain a sort of ``musical Turing test'' is natural.
+and also contain a sort of ``musical Turing test'' is natural. As mentioned in 
+chapter V, some form of systematic interviews has been utilized by \citeauthor{sturm2017taking} 
+\cite{sturm2017taking}, but when we combine this approach with the other 2 evaluation metrics described in this paper, the resulting framework becomes novel and more robust as an evaluation method for machine learning methods in the creative arts domain, such as music.
 
 \vspace{3em}
 
